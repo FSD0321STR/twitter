@@ -1,19 +1,17 @@
 {
   "name": "twitter",
-  "version": "1.0.0",
-  "description": "Front of twitter clone",
-  "main": "index.js",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FSD0321STR/twitter.git"
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FSD0321STR/twitter/issues"
-  },
-  "homepage": "https://github.com/FSD0321STR/twitter#readme"
+  "devDependencies": {
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "vite": "^2.3.7"
+  }
 }
