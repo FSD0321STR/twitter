@@ -1,13 +1,13 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from "react";
+import Menu from "../src/components/template/menu/menu.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
   return (
-    <h1>we r working</h1>
-    
-  )
+    <div>
+      <Menu />
+    </div>
+  );
 }
 
-export default App
+export default App;
