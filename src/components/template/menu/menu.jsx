@@ -6,12 +6,37 @@ import {
   Form,
   FormControl,
   Button,
+  Container,
+  Row,
+  Col
 } from "react-bootstrap";
 
 function Menu() {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#">Crower</Navbar.Brand>
+      <Container 
+      margin-left = "30px" 
+      >
+      <Row className="justify-content-md-center" > 
+      <Col md={1} > 
+      <Navbar.Brand href="/">
+      <img
+        src="../src/assets/images/logo.png"
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+      />
+      </Navbar.Brand>
+      </Col>
+      
+      <Col md={1}>
+      <Navbar.Brand href="/">
+
+        <span>Crower</span>
+        
+      </Navbar.Brand>
+      </Col>
+      <Col md={6}>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
@@ -19,7 +44,7 @@ function Menu() {
           style={{ maxHeight: "100px" }}
           navbarScroll
         >
-          <Nav.Link href="#action1">Home</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="#action2">Notifications</Nav.Link>
           <Nav.Link href="#action3">Profile</Nav.Link>
           <Nav.Link href="#action4">Messages</Nav.Link>
@@ -35,6 +60,10 @@ function Menu() {
             Link
           </Nav.Link>
         </Nav>
+        </Navbar.Collapse>
+        </Col>
+        <Col md={4} >
+        <Navbar.Collapse id="navbarScroll">
         <Form className="d-flex">
           <FormControl
             type="search"
@@ -45,6 +74,9 @@ function Menu() {
           <Button variant="outline-success">Search</Button>
         </Form>
       </Navbar.Collapse>
+      </Col>
+      </Row>
+      </Container>
     </Navbar>
   );
 }
