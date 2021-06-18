@@ -1,29 +1,23 @@
-import React from 'react'
-import Card from 'react-bootstrap/Card'
-import InputGroup from 'react-bootstrap/InputGroup'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import React from "react";
+import Card from "react-bootstrap/Card";
 
+//Esto pide un tweet al backend y lo printea en esta card   :)
 
-function TweetCard () {
-    return (
-        <Card>
-  <Card.Header as="h5">Type Crowers</Card.Header>
-  <Card.Body>
-  <InputGroup size="lg">
-    <Form.Control
-      placeholder="What's Going On??"
-      aria-label="What's Going On??"
-      aria-describedby="basic-addon2"
-    />
-    <InputGroup.Append>
-    </InputGroup.Append>
-  </InputGroup>
-    <Button variant="dark" size="lg">Send</Button>
-    <Button variant="outline-danger">Delete</Button>
-  </Card.Body>
-</Card>
-    )
+function TweetCard() {
+  return (
+    <Card style={{ width: "50rem" }}>
+      <Card.Img variant="top" src="" />
+      <Card.Body>
+        <Card.Text>
+          Some quick example text to type some example crows
+        </Card.Text>
+        <Card.Link href="#">recrow</Card.Link>
+        <Card.Link href="#">❤</Card.Link>
+        <Card.Link href="#">respond</Card.Link>
+        <Card.Link href="#">share</Card.Link>
+      </Card.Body>
+    </Card>
+  );
 }
 
-export default   TweetCard
+export default TweetCard;
