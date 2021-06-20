@@ -1,0 +1,13 @@
+.feed {
+  width: fit-content;
+  overflow-y: scroll;
+  border-right: 2px grey;
+}
+
+.feed__header {
+  background-color: rgb(241, 241, 241);
+  position: sticky;
+  top: 0;
+  font-size: 25px;
+  font-weight: bold;
+}
