@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import LoadingButton from "./loadingButton";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
@@ -38,7 +37,7 @@ function LoginForm() {
       <Form.Group controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Remember me" />
       </Form.Group>
-      <LoadingButton />
+      <button type="submit">Submit</button>
     </Form>
   );
 }
