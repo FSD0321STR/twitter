@@ -1,12 +1,11 @@
-import React from 'react';
-import Card from "react-bootstrap/Card";
-
-
+import React from "react";
 
 function UserProfile() {
-    return(
-        <h1>Hola!</h1>
-    )
+  return (
+<div> Hola!</div>
+
+
+  );
 }
 
 export default UserProfile;
