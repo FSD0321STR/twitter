@@ -14,29 +14,29 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import AuthProvider from "./components/authProvider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Welcome />
-        </Route>
-        <Route exact path="/Agustin"></Route>
-        <Route path="/Pedro">
-          <Menu />
-          <InputCard />
-          <EditProfileForm />
-          <TweetCard />
-        </Route>
-        <Route path="/Jose">
-          <Menu />
-          <Feed />
-          <Footer />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-    // >>>>>>> 69224346b8bac94c85b2859c2244d70f9247696d
+    <AuthProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
+          <Route exact path="/Agustin"></Route>
+          <Route path="/Pedro">
+            <Menu />
+            <InputCard />
+            <EditProfileForm />
+            <TweetCard />
+          </Route>
+          <Route path="/Jose">
+            <Footer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
