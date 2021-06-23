@@ -13,12 +13,8 @@ function Feed() {
     <Container>
       <Row>
         <Col className="feed" sm={8}>
-          <header className="feed__header">Tweets</header>
-        </Col>
-        <Col className="widgets" sm={4}>
-          <header className="feed__discover">Discover</header>
-          <Card style={{ width: "18rem" }}>
-            <Card.Header>What's going on?</Card.Header>
+          <Card style={{ width: "45rem" }}>
+            <Card.Header className="feed__header">Tweets</Card.Header>
             <ListGroup variant="flush">
               <ListGroup.Item>Story 1</ListGroup.Item>
               <ListGroup.Item>Story 2</ListGroup.Item>
@@ -26,12 +22,18 @@ function Feed() {
             </ListGroup>
           </Card>
         </Col>
-      </Row>
-      <Row>
-        <Col sm={8}>
-          <TweetsFeed />
+        <Col className="widgets" sm={4}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Header className="feed__discover">
+              What's going on?
+            </Card.Header>
+            <ListGroup variant="flush">
+              <ListGroup.Item>Story 1</ListGroup.Item>
+              <ListGroup.Item>Story 2</ListGroup.Item>
+              <ListGroup.Item>Story 3</ListGroup.Item>
+            </ListGroup>
+          </Card>
         </Col>
-        <Col className="widgets" sm={4}></Col>
       </Row>
     </Container>
   );
