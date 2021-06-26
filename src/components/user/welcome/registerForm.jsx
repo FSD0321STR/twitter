@@ -7,15 +7,17 @@ import InputGroup from "react-bootstrap/InputGroup";
 import LoadingButton from "./loadingButton";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { Button } from "react-bootstrap";
 
 
 const schema = yup.object().shape({
-  firstName: yup.string().required("First Name is require."), 
-  lastName: yup.string().required("Last Name is require."), 
-  username: yup.string().required("Username is require."), 
-  mail: yup.string().required("Mail is require."), 
-  birthDate: yup.string().required("Birth Date is require."), 
-  password: yup.string().required("Password is require."), 
+  firstName: yup.string().required(), 
+  lastName: yup.string().required(), 
+  username: yup.string().required(), 
+  mail: yup.string().required(), 
+  birthDate: yup.string().required(), 
+  password: yup.string().required(),
+  confirmPassword: yup.string().required(), 
   terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
 });
 
@@ -35,11 +37,10 @@ function RegisterForm() {
     history.push("/Pedro");
   }
 
-  function onChange(value) {
-  console.log(value);
-  setFirstName(value);
-  console.log(firstName);
-  };
+  //function onChange(value) {
+  //setFirstName(value);
+  //console.log(firstName);
+  //};
 
   return (
     <Formik
@@ -51,6 +52,8 @@ function RegisterForm() {
         username: "",
         mail: "",
         birthDate: "",
+        password: "",
+        confirmPasword: "",
         terms: false,
       }}
     >
@@ -63,14 +66,10 @@ function RegisterForm() {
                 type="text"
                 placeholder="Name"
                 name="firstName"
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
                 isValid={touched.firstName && !errors.firstName}
-                isInvalid={!!errors.firstName}
               />
-              <Form.Control.Feedback type="invalid">
-                {errors.firstName}
-              </Form.Control.Feedback>
-              <Form.Control.Feedback>All Right!</Form.Control.Feedback>
+              <Form.Control.Feedback> Looks good!   </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationFormik02">
               <Form.Label>Last name</Form.Label>
@@ -82,7 +81,7 @@ function RegisterForm() {
                 isValid={touched.lastName && !errors.lastName}
               />
 
-              <Form.Control.Feedback></Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationFormikUsername">
               <Form.Label>Username</Form.Label>
@@ -140,8 +139,8 @@ function RegisterForm() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                onChange={(e) => setPassword(e.target.value)}
-                isInvalid={!!errors.password}
+                //onChange={(e) => setPassword(e.target.value)}
+                //isInvalid={!!errors.password}
               />
             </Form.Group>
           </Form.Row>
@@ -156,7 +155,7 @@ function RegisterForm() {
               id="validationFormik0"
             />
           </Form.Group>
-          <LoadingButton />
+          <Button type="submit">Register!</Button>
         </Form>
       )}
     </Formik>

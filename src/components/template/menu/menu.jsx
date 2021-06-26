@@ -41,7 +41,7 @@ function Menu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/Pedro">Home</Nav.Link>
                 <Nav.Link href="#action2">Notifications</Nav.Link>
                 <Nav.Link href="#action3">Profile</Nav.Link>
                 <Nav.Link href="#action4">Messages</Nav.Link>
