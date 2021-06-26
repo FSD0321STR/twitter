@@ -1,11 +1,14 @@
 import React from "react";
+import useAuth from "../hooks/useAuth";
 
-function UserProfile() {
+function UserProfilePage() {
+  const { email, lastLogin } = useAuth();
   return (
-<div> Hola!</div>
-
-
+    <div>
+      Last login at <code>{lastLogin.toISOString()}</code> with email{" "}
+      <code>{email}</code>
+    </div>
   );
 }
 
-export default UserProfile;
+export default UserProfilePage;
