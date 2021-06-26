@@ -1,4 +1,5 @@
 import React from "react";
+import handleLogout from "/src/components/users/logOut.jsx";
 import {
   Navbar,
   Nav,
@@ -50,8 +51,14 @@ function Menu() {
                     Another action
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action7">Log Out</NavDropdown.Item>
-                  <img src="logout.svg" alt="logout icon"></img>
+                  <NavDropdown.Item href="/" onClick={handleLogout()}>
+                    Log Out{" "}
+                    <img
+                      width="18"
+                      height="18"
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoJPGc+CgkJPHBhdGggZD0iTTUwNS42NjQsMjQzLjczOWwtNTQuNzgzLTM4LjYyMmMtOS45MjYtNi45OTctMjMuNjQ1LDAuMTI4LTIzLjY0NSwxMi4yNnYyMy42MjJIMTY0LjE5NiAgICBjLTguMjg0LDAtMTUuMDAxLDYuNzE2LTE1LjAwMSwxNS4wMDFTMTU1LjkxMiwyNzEsMTY0LjE5NiwyNzFoMjYzLjAzOHYyMy42MjFjMCwxMi4yMTIsMTMuNzkyLDE5LjIwNCwyMy42NDQsMTIuMjZsNTQuNzgzLTM4LjYyMiAgICBDNTE0LjAyNywyNjIuMzY1LDUxNC4xOTYsMjQ5Ljc2Nyw1MDUuNjY0LDI0My43Mzl6IiBmaWxsPSIjZmY3ZjdmIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+Cgk8L2c+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxnPgoJCTxwYXRoIGQ9Ik00MzAuNDcxLDM1Mi4zMTdjLTcuMTY5LTQuMTQ2LTE2LjM0Ny0xLjY5OC0yMC40OTYsNS40NzRjLTM1LjIzNiw2MC45MTYtMTAxLjEwMywxMDEuODExLTE3Ni4zNzIsMTAxLjgxMSAgICBjLTExMi4yNjYsMC0yMDMuNjAyLTkxLjMzNi0yMDMuNjAyLTIwMy42MDJTMTIxLjMzNyw1Mi4zOTgsMjMzLjYwMyw1Mi4zOThjNzUuMzE5LDAsMTQxLjE1Niw0MC45MzMsMTc2LjM3MSwxMDEuODA5ICAgIGM0LjE0OCw3LjE3MiwxMy4zMjgsOS42MTksMjAuNDk2LDUuNDc0YzcuMTcxLTQuMTQ4LDkuNjIxLTEzLjMyNSw1LjQ3NC0yMC40OTZDMzk1LjQxOCw2OS4xMjcsMzE5LjcyOSwyMi4zOTcsMjMzLjYwMywyMi4zOTcgICAgQzEwNC40OSwyMi4zOTcsMCwxMjYuODc2LDAsMjU2YzAsMTI5LjExMywxMDQuNDc5LDIzMy42MDMsMjMzLjYwMywyMzMuNjAzYzg2LjE2MywwLDE2MS44MzMtNDYuNzYzLDIwMi4zNDItMTE2Ljc5ICAgIEM0NDAuMDkyLDM2NS42NDIsNDM3LjY0MiwzNTYuNDY2LDQzMC40NzEsMzUyLjMxN3oiIGZpbGw9IiNmZjdmN2YiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD4KCTwvZz4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+"
+                    />
+                  </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="#" disabled>
                   Link
