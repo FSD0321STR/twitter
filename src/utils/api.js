@@ -1,13 +1,10 @@
 import axios from "axios";
-import { generateId } from "./string";
 
 const api = axios.create({
   baseURL: "http://localhost:8080/",
 });
 
 const token = localStorage.getItem('token');
-
-console.log(token);
 
 api.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
 
@@ -96,14 +93,14 @@ const login = ({email, password}) => {
   .catch(error => console.error('Error:', error))
 }
 
-const register = ({email, password}) => {
+const register = ({email, password, firstName, lastName, userName, birthDate}) => {
   return fetch(`${API_URL}/register`, {
     method: 'POST',
     mode: 'cors',
     headers: { 
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({email, password, firstName, lastName, userName, birthDate})
   }).then(res => res = res.json())
   .catch(error => console.error('Error:', error))
 }

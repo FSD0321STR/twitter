@@ -40,7 +40,7 @@ function Menu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/Pedro">Home</Nav.Link>
                 <Nav.Link href="#action2">Notifications</Nav.Link>
                 <Nav.Link href="#action3">Profile</Nav.Link>
                 <Nav.Link href="#action4">Messages</Nav.Link>
@@ -50,7 +50,7 @@ function Menu() {
                     Another action
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action7">Log Out</NavDropdown.Item>
+                  <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
                   <img src="logout.svg" alt="logout icon"></img>
                 </NavDropdown>
                 <Nav.Link href="#" disabled>
