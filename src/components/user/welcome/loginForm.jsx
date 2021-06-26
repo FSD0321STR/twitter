@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
+
+
 function LoginForm() {
   const { login } = useAuth();
   const history = useHistory();
@@ -14,6 +16,7 @@ function LoginForm() {
     login({ email, password });
     history.push("/Pedro");
   }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formBasicEmail">
@@ -37,7 +40,7 @@ function LoginForm() {
       <Form.Group controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Remember me" />
       </Form.Group>
-      <button type="submit">Submit</button>
+      <button type="submit">Log In</button>
     </Form>
   );
 }

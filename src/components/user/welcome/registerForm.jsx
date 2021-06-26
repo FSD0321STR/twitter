@@ -8,13 +8,14 @@ import LoadingButton from "./loadingButton";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
+
 const schema = yup.object().shape({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  username: yup.string().required(),
-  mail: yup.string().required(),
-  birthDate: yup.string().required(),
-  password: yup.string().required(),
+  firstName: yup.string().required("First Name is require."), 
+  lastName: yup.string().required("Last Name is require."), 
+  username: yup.string().required("Username is require."), 
+  mail: yup.string().required("Mail is require."), 
+  birthDate: yup.string().required("Birth Date is require."), 
+  password: yup.string().required("Password is require."), 
   terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
 });
 
@@ -31,14 +32,14 @@ function RegisterForm() {
   function handleSubmit(event) {
     event.preventDefault();
     register({ email, password, firstName, lastName, userName, birthDate });
-    history.push("/Jose");
+    history.push("/Pedro");
   }
 
   function onChange(value) {
-    console.log(value);
-    setFirstName(value);
-    console.log(firstName);
-  }
+  console.log(value);
+  setFirstName(value);
+  console.log(firstName);
+  };
 
   return (
     <Formik
