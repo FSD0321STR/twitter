@@ -5,9 +5,10 @@
 }
 
 .feed__header {
-  background-color: rgb(241, 241, 241);
+  background-color: grey;
   position: sticky;
   top: 0;
-  font-size: 25px;
+  color: white;
+  font-size: 22px;
   font-weight: bold;
 }
