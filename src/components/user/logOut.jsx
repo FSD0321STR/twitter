@@ -1,12 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 async function handleLogout() {
-  await Auth.signOut();
+  await useAuth.signOut();
 
   userHasAuthenticated(false);
 
-  history.push("/");
+  const useistory.push("/");
 }
 
 export default handleLogout;

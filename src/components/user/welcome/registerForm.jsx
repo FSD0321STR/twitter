@@ -1,161 +1,310 @@
 import React, { useState } from "react";
-import { Formik } from "formik";
-import * as yup from "yup";
+import { Formik, Field } from "formik";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
-import LoadingButton from "./loadingButton";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Button } from "react-bootstrap";
 
-
-const schema = yup.object().shape({
-  firstName: yup.string().required(), 
-  lastName: yup.string().required(), 
-  username: yup.string().required(), 
-  mail: yup.string().required(), 
-  birthDate: yup.string().required(), 
-  password: yup.string().required(),
-  confirmPassword: yup.string().required(), 
-  terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
-});
-
 function RegisterForm() {
-  const { register } = useAuth();
+  const auth = useAuth();
   const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [show, setShow] = useState(false);
+  const [reShow, setReShow] = useState(false);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    register({ email, password, firstName, lastName, userName, birthDate });
-    history.push("/Pedro");
-  }
+  const showPassword = () => setShow(!show);
+  const showRePassword = () => setReShow(!reShow);
 
-  //function onChange(value) {
-  //setFirstName(value);
-  //console.log(firstName);
-  //};
+  const validateEmail = (value) => {
+    if (!value) {
+      return "Email adress is required.";
+    }
+    if (
+      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        value
+      )
+    ) {
+      return "Please, introduce a valid email.";
+    }
+  };
+
+  const validateFirstName = (value) => {
+    if (!value) {
+      return "Please, provide your first name.";
+    }
+  };
+
+  const validateLastName = (value) => {
+    if (!value) {
+      return "Please, provide your last name.";
+    }
+  };
+
+  const validateUserName = (value) => {
+    if (!value) {
+      return "Please, provide your Username.";
+    }
+  };
+
+  const validateBirthDate = (value) => {
+    if (!value) {
+      return "Please, provide your birth date.";
+    }
+  };
+
+  const passwordsMatch = (password, rePaswword) => {
+    return password === rePassword;
+  };
+
+  const validatePassword = (value) => {
+    if (!value) {
+      return "Please, introduce a valid password.";
+    }
+    if (value.length < 8) {
+      return "Password must have at least 8 characters.";
+    }
+  };
+
+  const validateRePassword = (value) => {
+    if (!value) {
+      return "Please, repeat your password.";
+    }
+    if (value.legth < 8) {
+      return "Password must have at least 8 characters.";
+    }
+  };
+
+  const submitRegisterForm = async (values, actions) => {
+    if (!passwordsMatch(values.password, values.rePassword)) {
+      actions.setSubmitting(false);
+      actions.validateField("password");
+    }
+
+    auth
+      .register({
+        email: values.email,
+        password: values.password,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        userName: values.userName,
+        birthDate: values.birthDate,
+      })
+      .then((res) => {
+        actions.setSubmitting(false);
+        history.push("/Pedro");
+      });
+  };
 
   return (
     <Formik
-      validationSchema={schema}
-      onSubmit={console.log}
       initialValues={{
         firstName: "",
         lastName: "",
-        username: "",
-        mail: "",
+        userName: "",
+        email: "",
         birthDate: "",
         password: "",
-        confirmPasword: "",
+        rePasword: "",
         terms: false,
       }}
+      onSubmit={submitRegisterForm}
     >
-      {({ handleChange, handleBlur, values, touched, isValid, errors }) => (
-        <Form noValidate onSubmit={handleSubmit}>
+      {(props) => (
+        <Form>
           <Form.Row>
-            <Form.Group as={Col} md="4" controlId="validationFormik01">
-              <Form.Label>First name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Name"
-                name="firstName"
-                onChange={(e) => setFirstName(e.target.value)}
-                isValid={touched.firstName && !errors.firstName}
-              />
-              <Form.Control.Feedback> Looks good!   </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationFormik02">
-              <Form.Label>Last name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Last Name"
-                name="lastName"
-                onChange={(e) => setLastName(e.target.value)}
-                isValid={touched.lastName && !errors.lastName}
-              />
+            <Field name="firstName" validate={validateFirstName}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="4">
+                  <Form.Label>First name</Form.Label>
+                  <Form.Control
+                    isRequired
+                    type="text"
+                    placeholder="Name"
+                    name="firstName"
+                  />
+                  <Form.Control.Feedback> Looks good! </Form.Control.Feedback>
+                </Form.Group>
+              )}
+            </Field>
 
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationFormikUsername">
-              <Form.Label>Username</Form.Label>
-              <InputGroup hasValidation>
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                </InputGroup.Prepend>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  aria-describedby="inputGroupPrepend"
-                  name="username"
-                  onChange={(e) => setUserName(e.target.value)}
-                  isInvalid={!!errors.username}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.username}
-                </Form.Control.Feedback>
-              </InputGroup>
-            </Form.Group>
+            <Field name="lastName" validate={validateLastName}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="4">
+                  <Form.Label>Last name</Form.Label>
+                  <Form.Control
+                    isRequired
+                    type="text"
+                    placeholder="Last Name"
+                    name="lastName"
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </Form.Group>
+              )}
+            </Field>
+            <Field name="userName" validate={validateUserName}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="4">
+                  <Form.Label>Username</Form.Label>
+                  <InputGroup hasValidation>
+                    <InputGroup.Prepend>
+                      <InputGroup.Text id="inputGroupPrepend">
+                        @
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <Form.Control
+                      isRequired
+                      type="text"
+                      placeholder="Username"
+                      aria-describedby="inputGroupPrepend"
+                      name="userName"
+                    />
+                  </InputGroup>
+                </Form.Group>
+              )}
+            </Field>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} md="7" controlId="validationFormik03">
-              <Form.Label>Mail</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter Mail"
-                name="mail"
-                onChange={(e) => setEmail(e.target.value)}
-                isInvalid={!!errors.mail}
-              />
-            </Form.Group>
-            <Form.Group as={Col} md="5" controlId="validationFormik04">
-              <Form.Label>Birth Date</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Enter date"
-                name="birthDate"
-                onChange={(e) => setBirthDate(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group as={Col} md="7" controlId="validationFormik05">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-                isInvalid={!!errors.password}
-              />
-            </Form.Group>
-            <Form.Group as={Col} md="7" controlId="validationFormik06">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                name="password"
-                //onChange={(e) => setPassword(e.target.value)}
-                //isInvalid={!!errors.password}
-              />
-            </Form.Group>
+            <Field name="email" validate={validateEmail}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="7">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    isRequired
+                    type="email"
+                    placeholder="Enter Mail"
+                    name="email"
+                  />
+                </Form.Group>
+              )}
+            </Field>
+
+            <Field name="birthDate" validate={validateBirthDate}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="5">
+                  <Form.Label>Birth Date</Form.Label>
+                  <Form.Control isRequired type="date" name="birthDate" />
+                </Form.Group>
+              )}
+            </Field>
+            <Field name="password" validate={validatePassword}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="7">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    isRequired
+                    type={show ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
+                    aria-describedby="basic-addon1"
+                  />
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <Button
+                        variant="outline-secondary"
+                        children={
+                          show ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-eye-slash"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                              <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                              <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-eye-fill"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                            </svg>
+                          )
+                        }
+                        onClick={showPassword}
+                      />
+                    </InputGroup.Prepend>
+                  </InputGroup>
+                </Form.Group>
+              )}
+            </Field>
+
+            <Field name="rePassword" validate={validateRePassword}>
+              {({ field, form }) => (
+                <Form.Group as={Col} md="7">
+                  <Form.Label>Confirm your password</Form.Label>
+                  <Form.Control
+                    isRequired
+                    type={reShow ? "text" : "password"}
+                    placeholder="Confirm Password"
+                    name="password"
+                    aria-describedby="basic-addon1"
+                  />
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <Button
+                        variant="outline-secondary"
+                        children={
+                          reShow ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-eye-slash"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                              <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                              <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-eye-fill"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                            </svg>
+                          )
+                        }
+                        onClick={showRePassword}
+                      />
+                    </InputGroup.Prepend>
+                  </InputGroup>
+                </Form.Group>
+              )}
+            </Field>
           </Form.Row>
           <Form.Group>
             <Form.Check
               required
               name="terms"
               label="Agree to terms and conditions"
-              onChange={handleChange}
-              isInvalid={!!errors.terms}
-              feedback={errors.terms}
               id="validationFormik0"
             />
           </Form.Group>
-          <Button type="submit">Register!</Button>
+          <Button 
+            bgGradient="linear(to-r, red.500, yellow.500"
+            color="white"
+            _hover={{
+                    bgGradient: "linear(to-1, #7928CA, #FF0080)",
+            }}
+            isLoading={props.isSubmitting}
+            type="submit">Register!</Button>
         </Form>
       )}
     </Formik>

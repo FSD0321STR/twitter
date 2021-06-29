@@ -1,5 +1,4 @@
 import React from "react";
-import handleLogout from "/src/components/users/logOut.jsx";
 import {
   Navbar,
   Nav,
@@ -51,7 +50,7 @@ function Menu() {
                     Another action
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/" onClick={handleLogout()}>
+                  <NavDropdown.Item href="/">
                     Log Out{" "}
                     <img
                       width="18"

@@ -48,7 +48,11 @@ function AuthProvider({ children }) {
   const login = async ({ email, password }) => {
     await api
       .login({ email, password })
-      .then((token) => {
+      .then((data) => {
+        if (data.message) {
+          dispatch({ type: "logout" });
+          return data.message;
+        } 
         dispatch({ type: "login", token: token.token });
         localStorage.setItem("token", token.token);
       })
