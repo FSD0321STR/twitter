@@ -5,8 +5,8 @@ import Footer from "../src/components/template/footer/footer";
 /* <<<<<<< HEAD */
 import Feed from "./components/tweets/tweets/list/feed/feed.jsx";
 import EditProfileForm from "../src/components/user/profile/edit/editAccordion";
-import InputCard from "../src/components/tweets/card/inputCard";
-import Welcome from "./components/users/welcome/welcomePage";
+import InputCard from "./components/tweets/card/inputCard";
+import Welcome from "../src/components/user/welcome/welcomePage";
 import TweetCard from "../src/components/tweets/card/card";
 import {
   BrowserRouter,
@@ -42,6 +42,8 @@ function App() {
             <TweetCard />
           </Route>
           <Route path="/Jose">
+            <Menu />
+            <Feed />
             <Footer />
           </Route>
         </Switch>

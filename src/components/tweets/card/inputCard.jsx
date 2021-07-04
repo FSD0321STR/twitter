@@ -1,30 +1,37 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-import InputGroup from "react-bootstrap/InputGroup";
-import Form from "react-bootstrap/Form";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import Button from "react-bootstrap/Button";
+import "./inputCard.css";
 
 //Esto envia la info de un tweet al backend para despues printearla en una card
 
 function InputCard() {
+  const [tweetMessage, setTweetMessage] = useState("");
+
+  const sendTweet = () => {
+    setTweetMessage("");
+  };
+
   return (
-    <Card>
-      <Card.Header as="h5">Type Crowers</Card.Header>
-      <Card.Body>
-        <InputGroup size="lg">
-          <Form.Control
-            placeholder="What's Going On??"
-            aria-label="What's Going On??"
-            aria-describedby="basic-addon2"
+    <div className="tweetBox">
+      <form>
+        <div className="tweetBox__input">
+          <input
+            onChange={(e) => setTweetMessage(e.target.value)}
+            value={tweetMessage}
+            placeholder="What's happening?"
+            type="text"
           />
-          <InputGroup.Append></InputGroup.Append>
-        </InputGroup>
-        <Button variant="dark" size="lg">
-          Send
+        </div>
+        <Button
+          className="tweetBox__tweetButton"
+          onClick={sendTweet}
+          type="submit"
+        >
+          Crow
         </Button>
-        <Button variant="outline-danger">Delete</Button>
-      </Card.Body>
-    </Card>
+      </form>
+    </div>
   );
 }
 

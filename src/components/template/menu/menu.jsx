@@ -1,5 +1,5 @@
 import React from "react";
-import handleLogout from "/src/components/users/logOut.jsx";
+import handleLogout from "../menu/logOut";
 import {
   Navbar,
   Nav,
