@@ -3,18 +3,19 @@ import Form from "react-bootstrap/Form";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 
 function LoginForm() {
-  const { login } = useAuth();
+  const { login, logged } = useAuth();
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    login({ email, password });
-    history.push("/Pedro");
+    await login({ email, password });
+    if (logged) history.push("/Pedro");
   }
 
   return (
@@ -37,9 +38,13 @@ function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
+
+
       <Form.Group controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Remember me" />
       </Form.Group>
+
+  
       <button type="submit">Log In</button>
     </Form>
   );

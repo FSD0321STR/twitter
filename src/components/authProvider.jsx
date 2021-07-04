@@ -32,9 +32,9 @@ const reducer = (state, action) => {
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const register = async ({ email, password }) => {
+  const register = async ({ email, password, firstName, lastName, userName, birthDate }) => {
     await api
-      .register({ email, password })
+      .register({ email, password, firstName, lastName, userName, birthDate })
       .then((token) => {
         dispatch({ type: "register", token: token.token });
         localStorage.setItem("token", token.token);
@@ -48,7 +48,11 @@ function AuthProvider({ children }) {
   const login = async ({ email, password }) => {
     await api
       .login({ email, password })
-      .then((token) => {
+      .then((data) => {
+        if (data.message) {
+          dispatch({ type: "logout" });
+          return data.message;
+        } 
         dispatch({ type: "login", token: token.token });
         localStorage.setItem("token", token.token);
       })

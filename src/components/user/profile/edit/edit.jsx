@@ -26,7 +26,7 @@ function EditProfile() {
         <Form>
           <Form.Group>
             <Form.File
-              id="exampleFormControlFile1"
+              id="exampleFormControlFile2"
               label="Upload your header photo here"
             />
           </Form.Group>
