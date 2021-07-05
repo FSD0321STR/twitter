@@ -1,8 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-=======
 import handleLogout from "../menu/logOut";
->>>>>>> feed
 import {
   Navbar,
   Nav,

@@ -9,7 +9,7 @@ import TweetCard from "../../../card/card";
 import "./tweetCard.css";
 import "./feed.css";
 import "./widgets.css";
-import FlipMove from "react-flip-move";
+//import FlipMove from "react-flip-move";
 
 function Feed() {
   /* const [tweet, setTweets] = useState[""];

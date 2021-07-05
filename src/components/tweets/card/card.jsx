@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import Card from "react-bootstrap/Card";
 
 //Esto pide un tweet al backend y lo printea en esta card   :)
