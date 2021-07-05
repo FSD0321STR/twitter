@@ -1,5 +1,4 @@
 import React from "react";
-import useAuth from "../hooks/useAuth";
 import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import { ListGroupItem } from "react-bootstrap";
@@ -8,7 +7,6 @@ import { Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 function UserProfilePage() {
-  const { email, lastLogin } = useAuth();
   return (
     <Card style={{ width: "20rem" }}>
       <Col xxs={6} md={4}>
@@ -40,10 +38,6 @@ function UserProfilePage() {
         <Button variant="primary">Likes</Button>
         <Button variant="primary">Message</Button>
       </Card.Body>
-      <div>
-        Last login at <code>{lastLogin.toISOString()}</code> with email{" "}
-        <code>{email}</code>
-      </div>
     </Card>
   );
 }

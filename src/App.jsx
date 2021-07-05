@@ -7,6 +7,7 @@ import EditProfileForm from "../src/components/user/profile/edit/editAccordion";
 import InputCard from "../src/components/tweets/card/inputCard";
 import Welcome from "../src/components/user/welcome/welcomePage";
 import TweetCard from "../src/components/tweets/card/card";
+import UserProfilePage from "../src/components/user/profile/userProfile/userProfile";
 import PrivateRoute from "./components/privateRoute";
 import {
   BrowserRouter,
@@ -28,19 +29,19 @@ async function handleLogout() {
 function App() {
   const history = useHistory();
   return (
-      <BrowserRouter>
-        <AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
         <Switch>
           <Route exact path="/">
             <Welcome />
           </Route>
-          <PrivateRoute path="/Agustin">
-          </PrivateRoute>
+          <PrivateRoute path="/Agustin"></PrivateRoute>
           <PrivateRoute path="/Pedro">
             <Menu />
             <InputCard />
             <EditProfileForm />
             <TweetCard />
+            <UserProfilePage />
           </PrivateRoute>
           <PrivateRoute path="/Jose">
             <Menu />
@@ -48,8 +49,8 @@ function App() {
             <Footer />
           </PrivateRoute>
         </Switch>
-        </AuthProvider>
-      </BrowserRouter>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
