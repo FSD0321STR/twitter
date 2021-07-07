@@ -5,7 +5,6 @@ import useAuth from "../../hooks/useAuth";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-
 function LoginForm() {
   const { login, logged } = useAuth();
   const history = useHistory();
@@ -15,7 +14,7 @@ function LoginForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     await login({ email, password });
-    if (logged) history.push("/Pedro");
+    if (logged) history.push("/userPage");
   }
 
   return (
@@ -39,12 +38,10 @@ function LoginForm() {
         />
       </Form.Group>
 
-
       <Form.Group controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Remember me" />
       </Form.Group>
 
-  
       <button type="submit">Log In</button>
     </Form>
   );

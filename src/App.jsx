@@ -1,12 +1,7 @@
 import React from "react";
-import Menu from "../src/components/template/menu/menu";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Footer from "../src/components/template/footer/footer";
 import Feed from "./components/tweets/tweets/list/feed/feed.jsx";
-import EditProfileForm from "../src/components/user/profile/edit/editAccordion";
-import InputCard from "../src/components/tweets/card/inputCard";
 import Welcome from "../src/components/user/welcome/welcomePage";
-import TweetCard from "../src/components/tweets/card/card";
 import UserProfilePage from "../src/components/user/profile/userProfile/userProfile";
 import PrivateRoute from "./components/privateRoute";
 import {
@@ -35,18 +30,14 @@ function App() {
           <Route exact path="/">
             <Welcome />
           </Route>
-          <PrivateRoute path="/Agustin"></PrivateRoute>
-          <PrivateRoute path="/Pedro">
-            <Menu />
-            <InputCard />
-            <EditProfileForm />
-            <TweetCard />
+          <PrivateRoute path="/List">
+            <Feed />
+          </PrivateRoute>
+          <PrivateRoute path="/userPage">
             <UserProfilePage />
           </PrivateRoute>
-          <PrivateRoute path="/Jose">
-            <Menu />
+          <PrivateRoute path="/Explorer">
             <Feed />
-            <Footer />
           </PrivateRoute>
         </Switch>
       </AuthProvider>

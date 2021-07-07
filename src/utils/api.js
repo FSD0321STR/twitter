@@ -13,14 +13,15 @@ api.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
 const API_URL = 'http://localhost:8080';
 
 const postTweet = (tweet) => {
-  return fetch(`${API_URL}/tweet`, {
+  return fetch(`${API_URL}/Tweet`, {
     method: 'POST',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify(tweet),
+    body: JSON.stringify({ body: tweet })
+    //body: JSON.stringify(tweet),
   }).then(res => res = res.json())
     .catch(error => console.error('Error:', error))
 }

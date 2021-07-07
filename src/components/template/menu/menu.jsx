@@ -18,7 +18,7 @@ function Menu() {
       <Container margin-left="30px">
         <Row className="justify-content-md-center">
           <Col md={1}>
-            <Navbar.Brand href="/">
+            <Navbar.Brand href="/List">
               <img
                 src="../src/assets/images/logo.png"
                 width="30"
@@ -29,7 +29,7 @@ function Menu() {
           </Col>
 
           <Col md={1}>
-            <Navbar.Brand href="/">
+            <Navbar.Brand href="/userPage">
               <span>Crower</span>
             </Navbar.Brand>
           </Col>
@@ -41,10 +41,10 @@ function Menu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/Pedro">Home</Nav.Link>
-                <Nav.Link href="#action2">Notifications</Nav.Link>
-                <Nav.Link href="#action3">Profile</Nav.Link>
-                <Nav.Link href="#action4">Messages</Nav.Link>
+                <Nav.Link href="/userPage">Profile</Nav.Link>
+                <Nav.Link href="/Messages">Messages</Nav.Link>
+                <Nav.Link href="/Explorer">Explorer</Nav.Link>
+
                 <NavDropdown title="Configuration" id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action5">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="#action6">
@@ -60,9 +60,6 @@ function Menu() {
                     />
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#" disabled>
-                  Link
-                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Col>

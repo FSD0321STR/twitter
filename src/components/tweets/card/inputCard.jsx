@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./inputCard.css";
-//import { postTweet } from "../../../utils/api";
+import api from "../../../utils/api";
 
 //Esto envia la info de un tweet al backend para despues printearla en una card
 
@@ -9,7 +9,7 @@ function InputCard() {
   const [tweetMessage, setTweetMessage] = useState("");
 
   const sendTweet = () => {
-    //postTweet(tweetMessage);
+    api.postTweet(tweetMessage);
     setTweetMessage("");
   };
 
@@ -24,11 +24,7 @@ function InputCard() {
             type="text"
           />
         </div>
-        <Button
-          className="tweetBox__tweetButton"
-          onClick={sendTweet}
-          type="submit"
-        >
+        <Button className="tweetBox__tweetButton" onClick={sendTweet}>
           Crow
         </Button>
       </form>

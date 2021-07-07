@@ -6,6 +6,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputCard from "../../../card/inputCard";
 import TweetCard from "../../../card/card";
+import Menu from "../../../../template/menu/menu";
+import Footer from "../../../../template/footer/footer";
 import "./tweetCard.css";
 import "./feed.css";
 import "./widgets.css";
@@ -20,10 +22,11 @@ function Feed() {
 
   return (
     <Container>
+      <Menu />
       <Row>
         <Col className="feed" sm={8}>
           <Card style={{ width: "45rem" }}>
-            <Card.Header className="feed__header">Tweets</Card.Header>
+            <Card.Header className="feed__header">Crows</Card.Header>
             <InputCard />
             <Card style={{ width: "45rem" }} className="twitter-tweet p">
               <Card.Img variant="top" src="" />
@@ -62,6 +65,7 @@ function Feed() {
           </Card>
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
   //   return (

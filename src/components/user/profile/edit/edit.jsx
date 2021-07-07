@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
+import useAuth from "../../../hooks/useAuth";
+import { useHistory } from "react-router-dom";
 
 function EditProfile() {
+  const { editProfile } = useAuth();
+  const history = useHistory();
+  const [biography, setBiography] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [web, setWeb] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    editProfile({ firstName, biography, birthDate, web });
+    history.push("/Jose");
+  }
+
   return (
     <div>
       <Form.Row>
@@ -33,14 +48,10 @@ function EditProfile() {
               type="text"
               placeholder="Your Name"
               name="firstName"
-              value={values.firstName}
-              onChange={handleChange}
-              isValid={touched.firstName && !errors.firstName}
-              isInvalid={!!errors.firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.firstName}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             <Form.Control.Feedback>All Right!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="4" controlId="validationFormik02">
@@ -49,7 +60,8 @@ function EditProfile() {
               type="date"
               placeholder="Enter date"
               name="birthDate"
-              onChange={handleChange}
+              onChange={(e) => setBirthDate(e.target.value)}
+              value={birthDate}
             />
           </Form.Group>
           <Form.Row>
@@ -61,14 +73,14 @@ function EditProfile() {
               <Form.Control
                 type="Text"
                 placeholder="Tell Us About Yourself"
-                name=" birthDate"
-                onChange={handleChange}
+                name=" bio"
+                onChange={(e) => setBiography(e.target.value)}
+                value={biography}
               />
             </Form.Group>
           </Form.Row>
         </Form.Row>
       </Form>
-
       <Form.Row>
         <Form.Group as={Col} controlId="formGridCity" md="5">
           <Form.Label>City</Form.Label>
@@ -83,7 +95,12 @@ function EditProfile() {
               https://example.com/
             </InputGroup.Text>
           </InputGroup.Prepend>
-          <Form.Control id="basic-url" aria-describedby="basic-addon3" />
+          <Form.Control
+            id="basic-url"
+            aria-describedby="basic-addon3"
+            onChange={(e) => setWeb(e.target.value)}
+            value={web}
+          />
         </InputGroup>
       </Form.Group>
       <Button variant="primary" type="submit" onClick={(e) => this.onSubmit(e)}>

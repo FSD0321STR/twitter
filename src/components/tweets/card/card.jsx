@@ -1,11 +1,11 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 
 //Esto pide un tweet al backend y lo printea en esta card   :)
 
 function TweetCard() {
   const [tweetMessage, setTweetMessage] = useState("");
-  const [tweetImage, setTweetImage] = useState("");
+  //const [tweetImage, setTweetImage] = useState("");
 
   const sendTweet = (e) => {
     e.preventDefault();
