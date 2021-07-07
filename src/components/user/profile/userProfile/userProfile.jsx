@@ -10,22 +10,14 @@ function UserProfilePage() {
   return (
     <Card style={{ width: "20rem" }}>
       <Col xxs={6} md={4}>
-        <Image
-          src="../src/assets/images/imgAvatar.png"
-          roundedCircle
-          width={175}
-          height={175}
-        />
+        <Image src="" roundedCircle width={175} height={175} />
       </Col>
       <Card.Body>
         <Card.Title>@userName </Card.Title>
 
         <Card.Text>
-          BIO:
-          <tr>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </tr>
+          BIO: Some quick example text to build on the card title and make up
+          the bulk of the card's content.
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
