@@ -1,0 +1,8 @@
+.feed__discover {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}

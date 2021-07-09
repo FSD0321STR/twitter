@@ -1,0 +1,14 @@
+.feed {
+  width: fit-content;
+  overflow-y: scroll;
+  border-right: 2px grey;
+}
+
+.feed__header {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}

@@ -1,45 +1,48 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Feed from "./components/tweets/tweets/list/feed/feed.jsx";
+import Welcome from "../src/components/user/welcome/welcomePage";
+import UserProfilePage from "../src/components/user/profile/userProfile/userProfile";
+import PrivateRoute from "./components/privateRoute";
+import {
+  BrowserRouter,
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
+import AuthProvider from "./components/authProvider";
 
-function App() {
-  const [count, setCount] = useState(0)
+async function handleLogout() {
+  await Auth.signOut();
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+  userHasAuthenticated(false);
+
+  history.push("/");
 }
 
-export default App
+function App() {
+  const history = useHistory();
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Switch>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
+          <PrivateRoute path="/List">
+            <Feed />
+          </PrivateRoute>
+          <PrivateRoute path="/userPage">
+            <UserProfilePage />
+          </PrivateRoute>
+          <PrivateRoute path="/Explorer">
+            <Feed />
+          </PrivateRoute>
+        </Switch>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
