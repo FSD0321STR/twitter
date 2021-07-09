@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Accordion from "react-bootstrap/Accordion";
 import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
+import "../../styles/textFlow.css";
 
 function Welcome() {
   return (
@@ -53,6 +54,9 @@ function Welcome() {
           </Accordion>
         </Nav.Item>
       </Nav>
+      <div className="bodyStyle">
+        <h2 className="h2">Type your Crows</h2>
+      </div>
     </Card>
   );
 }
