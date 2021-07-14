@@ -12,6 +12,8 @@ import {
   useHistory,
 } from "react-router-dom";
 import AuthProvider from "./components/authProvider";
+import "../src/components/styles/textFlow.css";
+
 
 async function handleLogout() {
   await Auth.signOut();
@@ -24,15 +26,16 @@ async function handleLogout() {
 function App() {
   const history = useHistory();
   return (
-    <BrowserRouter>
+    <div>
+      <BrowserRouter>
       <AuthProvider>
         <Switch>
           <Route exact path="/">
             <Welcome />
           </Route>
-          <PrivateRoute path="/List">
+          <Route path="/List">
             <Feed />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/userPage">
             <UserProfilePage />
           </PrivateRoute>
@@ -42,6 +45,7 @@ function App() {
         </Switch>
       </AuthProvider>
     </BrowserRouter>
+    </div>
   );
 }
 

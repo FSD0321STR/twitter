@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import "../../styles/textFlow.css";
+
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -43,6 +45,7 @@ function LoginForm() {
       </Form.Group>
 
       <button type="submit">Log In</button>
+
     </Form>
   );
 }

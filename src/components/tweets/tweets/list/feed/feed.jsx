@@ -1,95 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+import Tweet from "../../../card/tweet";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import InputCard from "../../../card/inputCard";
-import TweetCard from "../../../card/card";
+import InputTweet from "../../../card/inputTweet";
+import TweetList from "../../../card/tweetList";
 import Menu from "../../../../template/menu/menu";
 import Footer from "../../../../template/footer/footer";
+import api from "../../../../../../src/utils/api";
 import "./tweetCard.css";
 import "./feed.css";
 import "./widgets.css";
-//import FlipMove from "react-flip-move";
 
 function Feed() {
-  /* const [tweet, setTweets] = useState[""];
+  const [tweets, setTweets] = useState([]);
 
-  const createTweet = (tweet) => {
-    setTweets([...tweets, tweet]);
-  }; */
+  useEffect(async () => {
+    await api.getAllTweets().then(setTweets);
+  }, []);
+
+  const createTweet = async (tweet) => {
+    try {
+      const response = await api.postTweet(tweet);
+      setTweets([response, ...tweets]);
+    } catch {
+      setTweets(tweets);
+      createNotification("Could not create a crow");
+    }
+  };
+
+  const removeTweet = async (id) => {
+    const response = await api.deleteTweet(id);
+    alert(response.message);
+    const tweets = await api.getAllTweets();
+    setTweets(tweets);
+  };
 
   return (
     <Container>
-      <Menu />
+      <div className="feed__header">
+        <Menu />
+      </div>
       <Row>
-        <Col className="feed" sm={8}>
-          <Card style={{ width: "45rem" }}>
-            <Card.Header className="feed__header">Crows</Card.Header>
-            <InputCard />
-            <Card style={{ width: "45rem" }} className="twitter-tweet p">
-              <Card.Img variant="top" src="" />
-              <Card.Body>
-                <Card.Text>Hey @Agustín, what are you doing?</Card.Text>
-                <Card.Link href="#">Recrow</Card.Link>
-                <Card.Link href="#">❤</Card.Link>
-                <Card.Link href="#">Respond</Card.Link>
-                <Card.Link href="#">Share</Card.Link>
-              </Card.Body>
-            </Card>
-            <Card style={{ width: "45rem" }}>
-              <Card.Img variant="top" src="" />
-              <Card.Body>
-                <Card.Text>
-                  Hi my name is JJ. I am watching TV #Eurocopa #Spain
-                </Card.Text>
-                <Card.Link href="#">Recrow</Card.Link>
-                <Card.Link href="#">❤</Card.Link>
-                <Card.Link href="#">Respond</Card.Link>
-                <Card.Link href="#">Share</Card.Link>
-              </Card.Body>
-            </Card>
-          </Card>
+        <Col sm={8}>
+          <div className="feed">
+            <h2>Home</h2>
+            <InputTweet onSubmit={createTweet} />
+
+            <TweetList>
+              {tweets.map((tweet) => (
+                <Tweet
+                  key={tweet._id}
+                  body={tweet.body}
+                  onRemove={removeTweet}
+                />
+              ))}
+            </TweetList>
+          </div>
         </Col>
-        <Col className="widgets" sm={4}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Header className="feed__discover">
-              What's going on?
-            </Card.Header>
-            <ListGroup variant="flush">
-              <ListGroup.Item>Story 1</ListGroup.Item>
-              <ListGroup.Item>Story 2</ListGroup.Item>
-              <ListGroup.Item>Story 3</ListGroup.Item>
-            </ListGroup>
-          </Card>
-        </Col>
+        <div className="feed">
+          <h2>Explore the world</h2>
+        </div>
       </Row>
-      <Footer />
     </Container>
   );
-  //   return (
-  //     <div className="feed">
-  //       <div className="feed__header">
-  //         <h2>Home</h2>
-  //       </div>
-
-  //       <InputCard />
-
-  //       <FlipMove>
-  //         {posts.map((post) => (
-  //           <Post
-  //             key={post.text}
-  //             displayName={post.displayName}
-  //             username={post.username}
-  //             verified={post.verified}
-  //             text={post.text}
-  //             avatar={post.avatar}
-  //             image={post.image}
-  //           />
-  //         ))}
-  //       </FlipMove>
-  //     </div>
-  //   );
 }
+
 export default Feed;
