@@ -6,11 +6,78 @@
   box-sizing: border-box;
 }
 
-.bodyStyle {
+.backGroundMain {
   background-color: #363636;
   color: #292a2a;
   font: 16px/1.25 "Raleway", sans-serif;
   text-align: center;
+  height: 100vw;
+  margin: 0px 0px 0px 0px;
+  float:left;
+  width: "37rem";
+
+}
+
+.welcomeBackG {
+  background-color: #363636;
+}
+
+.bodyStyleLeft {
+  background-color: #363636;
+  border: 0px;
+  color: #292a2a;
+  font: 16px/1.25 "Raleway", sans-serif;
+  text-align: center;
+  height: 100vw;
+  margin: 0px 0px 0px 0px;
+  float:left;
+  width: "37rem";
+
+}
+.loginCard {
+  margin: 0px 0px 0px 0px;
+  border: transparent;
+  background-color: #7c7b7b;
+}
+
+.loginBack {
+ background-color: #d1d0d0;
+ margin: 0px 0px 0px 0px;
+ border: transparent;
+
+}
+
+.registerCard {
+  margin: 0px 0px 0px 0px;
+  border: transparent;
+  background-color: #7c7b7b;
+}
+
+
+.bodyStyleRight {
+  background-color: #363636;
+  color: #292a2a;
+  font: 16px/1.25 "Raleway", sans-serif;
+  text-align: center;
+  height: 100vw;
+  margin: 0px 0px 0px 0px;
+  float:right;
+  width: 100vw;
+  border: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bodyStyle {
+  background-color: #363636;
+  color: #292A2A;
+  font: 16px/1.25 "Raleway", sans-serif;
+  text-align: center;
+}
+
+.loginformbackgroundcolor {
+  color: #292a22;
 }
 
 #wrapper {
@@ -29,11 +96,21 @@
   width: 100%;
 }
 
-.h2 {
+.maintext {
   animation: text-shadow 3s ease-in-out infinite;
-  font-size: 5em;
+  font-size: 2em;
   font-weight: 900;
   line-height: 1;
+}
+
+.h2 {
+  animation: text-shadow 3s ease-in-out infinite;
+  font-size: 9em;
+  font-weight: 900;
+  line-height: 1;
+  width: 50vw;
+  height: 84vw;
+
 }
 
 .h2:hover {
@@ -51,30 +128,30 @@ a:hover {
 @keyframes text-shadow {
   0% {
     transform: translateY(0);
-    text-shadow: 0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b;
+    text-shadow: 0 0 0 #060606, 0 0 0 #3d3c3c, 0 0 0 #413e3e, 0 0 0 #868585;
   }
 
   20% {
     transform: translateY(-1em);
-    text-shadow: 0 0.125em 0 #0c2ffb, 0 0.25em 0 #2cfcfd, 0 -0.125em 0 #fb203b,
-      0 -0.25em 0 #fefc4b;
+    text-shadow: 0 0.125em 0 #060606, 0 0.25em 0 #3d3c3c, 0 -0.125em 0 #413e3e,
+      0 -0.25em 0 #868585;
   }
 
   40% {
     transform: translateY(0.5em);
-    text-shadow: 0 -0.0625em 0 #0c2ffb, 0 -0.125em 0 #2cfcfd,
-      0 0.0625em 0 #fb203b, 0 0.125em 0 #fefc4b;
+    text-shadow: 0 -0.0625em 0 #060606, 0 -0.125em 0 #3d3c3c,
+      0 0.0625em 0 #413e3e, 0 0.125em 0 #868585;
   }
 
   60% {
     transform: translateY(-0.25em);
-    text-shadow: 0 0.03125em 0 #0c2ffb, 0 0.0625em 0 #2cfcfd,
-      0 -0.03125em 0 #fb203b, 0 -0.0625em 0 #fefc4b;
+    text-shadow: 0 0.03125em 0 #060606, 0 0.0625em 0 #3d3c3c,
+      0 -0.03125em 0 #413e3e, 0 -0.0625em 0 #868585;
   }
 
   80% {
     transform: translateY(0);
-    text-shadow: 0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b;
+    text-shadow: 0 0 0 #060606, 0 0 0 #3d3c3c, 0 0 0 #413e3e, 0 0 0 #868585;
   }
 }
 

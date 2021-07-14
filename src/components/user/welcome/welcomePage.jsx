@@ -6,22 +6,23 @@ import Accordion from "react-bootstrap/Accordion";
 import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
 import "../../styles/textFlow.css";
+import { CardGroup } from "react-bootstrap";
 
 function Welcome() {
   return (
-    <Card>
+    <CardGroup className="welcomeBackG">
       <Nav variant="tabs" defaultActiveKey="#first">
         <Nav.Item>
           <Accordion>
-            <Card>
-              <Card style={{ width: "37rem" }}>
+            <Card className="bodyStyleLeft">
+              <Card className="loginCard">
                 <Card.Header>
                   <Accordion.Toggle as={Button} variant="dark" eventKey="1">
                     Login
                   </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="1">
-                  <Card>
+                  <Card className="loginBack">
                     <Card.Body>
                       <LoginForm />
                     </Card.Body>
@@ -33,8 +34,8 @@ function Welcome() {
                   </Card>
                 </Accordion.Collapse>
               </Card>
-              <Card style={{ width: "37rem" }}>
-                <Card.Header>
+              <Card style={{ width: "37rem" }} className="registerCard">
+                <Card.Header >
                   <Accordion.Toggle
                     as={Button}
                     variant="light"
@@ -54,10 +55,18 @@ function Welcome() {
           </Accordion>
         </Nav.Item>
       </Nav>
-      <div className="bodyStyle">
-        <h2 className="h2">Type your Crows</h2>
-      </div>
-    </Card>
+      <Card className="bodyStyleRight">
+        <div>
+          
+
+          <h2 className="h2">
+          <p>
+            <img src="../src/assets/images/logo.png" width="70" height="70" />
+          </p>
+            Hello Crower!</h2>
+        </div>
+      </Card>
+    </CardGroup>
   );
 }
 
