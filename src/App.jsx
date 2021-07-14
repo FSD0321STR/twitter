@@ -30,9 +30,9 @@ function App() {
           <Route exact path="/">
             <Welcome />
           </Route>
-          <PrivateRoute path="/List">
+          <Route path="/List">
             <Feed />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/userPage">
             <UserProfilePage />
           </PrivateRoute>

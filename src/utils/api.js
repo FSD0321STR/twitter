@@ -13,7 +13,7 @@ api.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
 const API_URL = 'http://localhost:8080';
 
 const postTweet = (tweet) => {
-  return fetch(`${API_URL}/Tweet`, {
+  return fetch(`${API_URL}/tweet`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -26,10 +26,8 @@ const postTweet = (tweet) => {
     .catch(error => console.error('Error:', error))
 }
 
-
-
 const getAllTweets = () => {
-  return fetch(`${API_URL}/tweets`, {
+  return fetch(`${API_URL}/tweet`, {
     method: 'GET',
     mode: 'cors',
     headers: {
@@ -37,7 +35,6 @@ const getAllTweets = () => {
     }
   })
     .then((response) => response.json())
-    .catch(error => console.error('Error:', error));
 }
 
 const deleteTweet = (tweetId) => {

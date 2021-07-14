@@ -8,8 +8,8 @@ import { Button } from "react-bootstrap";
 import Menu from "../../../template/menu/menu";
 import Footer from "../../../template/footer/footer";
 import EditProfileForm from "../edit/editAccordion";
-import InputCard from "../../../tweets/card/inputCard";
-import TweetCard from "../../../tweets/card/card";
+import InputTweet from "../../../tweets/card/inputTweet";
+import Tweet from "../../../tweets/card/tweet";
 
 function UserProfilePage() {
   return (
