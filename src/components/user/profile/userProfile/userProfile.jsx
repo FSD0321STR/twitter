@@ -19,13 +19,13 @@ function UserProfilePage() {
           <Menu />
         </div>
         <div>
-          <InputCard />
+          <InputTweet />
         </div>
         <div>
           <EditProfileForm />
         </div>
         <div>
-          <TweetCard />
+          <Tweet />
         </div>
       </div>
       <Card style={{ width: "20rem" }}>

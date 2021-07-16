@@ -14,7 +14,7 @@ import {
 
 function Menu() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="grey" expand="lg">
       <Container margin-left="30px">
         <Row className="justify-content-md-center">
           <Col md={1}>

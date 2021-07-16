@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://crower.herokuapp.com/",
+  baseURL: "http://localhost:8080",
 });
 
 const token = localStorage.getItem('token');
@@ -10,7 +10,7 @@ api.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
 
 
 
-const API_URL = 'https://crower.herokuapp.com/';
+const API_URL = 'http://localhost:8080';
 
 const postTweet = (tweet) => {
   return fetch(`${API_URL}/tweet`, {
